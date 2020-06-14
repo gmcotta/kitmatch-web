@@ -18,6 +18,7 @@ export const Nav = styled.nav<NavProps>`
     text-decoration: none;
     font-weight: bold;
     margin: 0 16px;
+    z-index: 16;
 
     &::nth-child(2) {
       margin-left: 0;

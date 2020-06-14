@@ -1,13 +1,21 @@
 import React from 'react';
 import Header from '../../components/Header';
 
-import { Title, Container } from './styles';
+import { Title, Container, BackgroundImage } from './styles';
 
 const Home: React.FC = () => {
   return (
     <Container>
       <Header />
-      <Title>Home</Title>
+      <Title>
+        <span>Aluguel</span>
+        &nbsp;de forma simples
+      </Title>
+      <p>
+        Ajudamos pessoas a encontrarem kitnets, e proprietários a anunciarem de
+        forma fácil!
+      </p>
+      <BackgroundImage />
     </Container>
   );
 };
