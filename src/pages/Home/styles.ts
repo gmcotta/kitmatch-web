@@ -6,6 +6,7 @@ import mobileBG from '../../assets/home_gray_house.svg';
 export const Container = styled.div`
   padding: 48px;
   max-width: 1366px;
+  height: 100vh;
   margin: 0 auto;
   position: relative;
 
@@ -17,7 +18,7 @@ export const Container = styled.div`
 
   @media (max-width: 425px) {
     padding: 16px;
-
+    height: 100vh;
     p {
       font-size: 16px;
       width: 200px;
@@ -45,16 +46,49 @@ export const BackgroundImage = styled.div`
   background-size: 100%;
   width: 888px;
   height: 464px;
-  position: fixed;
+  position: absolute;
   top: 200px;
   right: 32px;
-  z-index: -8;
+  z-index: -16;
 
   @media (max-width: 425px) {
     background: url(${mobileBG}) no-repeat;
+    position: fixed;
     width: 480px;
     height: 408px;
     top: 100px;
-    left: 48px;
+    right: -208px;
+  }
+`;
+
+export const FlexContainer = styled.section`
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+`;
+
+export const SelectWrapper = styled.div`
+  width: 396px;
+  margin-top: 68px;
+
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
+
+  @media (max-width: 425px) {
+    width: 100%;
+  }
+`;
+
+export const ButtonWrapper = styled.div`
+  width: 396px;
+  margin-top: 76px;
+
+  display: grid;
+  grid-template-rows: repeat(2, 1fr);
+  gap: 16px;
+
+  @media (max-width: 425px) {
+    width: 100%;
   }
 `;

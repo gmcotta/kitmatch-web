@@ -1,7 +1,7 @@
 import React, { InputHTMLAttributes } from 'react';
 import Select from 'react-select';
 
-import { Label, Container } from './styles';
+import { Label } from './styles';
 
 interface SelectProps extends InputHTMLAttributes<HTMLSelectElement> {
   name: string;
@@ -17,10 +17,11 @@ const customStyles = {
   control: (provided: any) => ({
     ...provided,
     border: 'none',
+    borderRadius: '8px',
     height: '44px',
-    width: '288px',
     marginTop: '8px',
     fontSize: '12px',
+    zIndex: '-10',
   }),
 
   indicatorSeparator: () => ({
@@ -32,15 +33,9 @@ const customStyles = {
     color: '#000',
   }),
 
-  menu: (provided: any) => ({
-    ...provided,
-    width: '288px',
-  }),
-
   menuList: (provided: any) => ({
     ...provided,
     fontSize: '12px',
-    width: '288px',
   }),
 };
 
@@ -51,7 +46,7 @@ const HomeSelect: React.FC<SelectProps> = ({
   onChange,
 }) => {
   return (
-    <Container>
+    <div>
       <Label>{name}</Label>
       <Select
         options={values}
@@ -60,7 +55,7 @@ const HomeSelect: React.FC<SelectProps> = ({
         noOptionsMessage={() => 'Sem opções'}
         styles={customStyles}
       />
-    </Container>
+    </div>
   );
 };
 

@@ -1,4 +1,5 @@
 import styled, { css } from 'styled-components';
+import { darken } from 'polished';
 
 interface NavProps {
   open: boolean;
@@ -18,14 +19,15 @@ export const Nav = styled.nav<NavProps>`
     text-decoration: none;
     font-weight: bold;
     margin: 0 16px;
-    z-index: 16;
-
-    &::nth-child(2) {
-      margin-left: 0;
-    }
+    text-transform: uppercase;
 
     &:last-child {
       margin-right: 0;
+    }
+
+    &:hover {
+      font-weight: 900;
+      color: ${darken(0.1, '#5e54ac')};
     }
   }
 
@@ -47,6 +49,7 @@ export const Nav = styled.nav<NavProps>`
         position: fixed;
         top: 0;
         left: 0;
+        z-index: 16;
 
         a {
           font-size: 32px;
@@ -58,11 +61,11 @@ export const Nav = styled.nav<NavProps>`
 
 export const MenuButton = styled.button`
   display: none;
-  z-index: 8;
   background-color: transparent;
   border: none;
 
   @media (max-width: 425px) {
     display: inline;
+    z-index: 16;
   }
 `;

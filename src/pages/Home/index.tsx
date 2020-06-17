@@ -2,8 +2,16 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import Header from '../../components/Header';
 import HomeSelect from '../../components/HomeSelect';
+import HomeButton from '../../components/HomeButton';
 
-import { Title, Container, BackgroundImage } from './styles';
+import {
+  Title,
+  Container,
+  BackgroundImage,
+  FlexContainer,
+  SelectWrapper,
+  ButtonWrapper,
+} from './styles';
 
 interface IBGEUfResponse {
   sigla: string;
@@ -81,24 +89,32 @@ const Home: React.FC = () => {
         <span>Aluguel</span>
         &nbsp;de forma simples
       </Title>
-      <p>
-        Ajudamos pessoas a encontrarem kitnets, e proprietários a anunciarem de
-        forma fácil!
-      </p>
       <BackgroundImage />
+      <FlexContainer>
+        <p>
+          Ajudamos pessoas a encontrarem kitnets, e proprietários a anunciarem
+          de forma fácil!
+        </p>
 
-      <HomeSelect
-        name="Estado"
-        values={UFs}
-        placeholder="Selecione o estado..."
-        onChange={handleUFChange}
-      />
-      <HomeSelect
-        name="Cidade"
-        values={cities}
-        placeholder="Selecione a cidade..."
-        onChange={handleCityChange}
-      />
+        <SelectWrapper>
+          <HomeSelect
+            name="Estado"
+            values={UFs}
+            placeholder="Selecione o estado..."
+            onChange={handleUFChange}
+          />
+          <HomeSelect
+            name="Cidade"
+            values={cities}
+            placeholder="Selecione a cidade..."
+            onChange={handleCityChange}
+          />
+        </SelectWrapper>
+        <ButtonWrapper>
+          <HomeButton>Encontre minha kitnet</HomeButton>
+          <HomeButton>Anuncie minha kitnet</HomeButton>
+        </ButtonWrapper>
+      </FlexContainer>
     </Container>
   );
 };
