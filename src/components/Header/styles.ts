@@ -6,7 +6,6 @@ interface NavProps {
 }
 
 export const Container = styled.header`
-  margin: 0 auto;
   display: flex;
   align-items: center;
   justify-content: space-between;

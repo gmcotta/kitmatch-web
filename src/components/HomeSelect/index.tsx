@@ -21,7 +21,7 @@ const customStyles = {
     height: '44px',
     marginTop: '8px',
     fontSize: '12px',
-    zIndex: '-10',
+    zIndex: '0',
   }),
 
   indicatorSeparator: () => ({
@@ -31,6 +31,11 @@ const customStyles = {
   dropdownIndicator: (provided: any) => ({
     ...provided,
     color: '#000',
+  }),
+
+  menu: (provided: any) => ({
+    ...provided,
+    borderRadius: '8px',
   }),
 
   menuList: (provided: any) => ({
