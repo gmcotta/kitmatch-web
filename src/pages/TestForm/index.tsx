@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import { Field, FormikProps, FormikHelpers, withFormik } from 'formik';
 import axios from 'axios';
-// import * as Yup from 'yup';
+import * as Yup from 'yup';
 
 import HomeSelect from '../../components/HomeSelect';
 
@@ -24,6 +24,10 @@ interface UFSelect {
 }
 
 const formikEnhancer = withFormik({
+  validationSchema: Yup.object().shape({
+    uf: Yup.string().required('Estado é obrigatório!'),
+    city: Yup.string().required('Cidade é obrigatória!'),
+  }),
   mapPropsToValues: () => ({
     uf: '',
     city: '',
@@ -35,7 +39,7 @@ const formikEnhancer = withFormik({
 });
 
 const MyForm = (props: FormikProps<FormValues>) => {
-  const { values, handleSubmit } = props;
+  const { values, errors, handleSubmit } = props;
 
   const [UFs, setUFs] = useState<UFSelect[]>([]);
   const [cities, setCities] = useState<UFSelect[]>([]);
@@ -85,15 +89,17 @@ const MyForm = (props: FormikProps<FormValues>) => {
         options={UFs}
         component={HomeSelect}
         placeholder="Selecione um estado..."
+        error={errors.uf}
       />
       <Field
         name="city"
         options={cities}
         component={HomeSelect}
         placeholder="Selecione uma cidade..."
+        error={errors.city}
       />
       <button type="submit">Enviar</button>
-      <p>{JSON.stringify(values, null, 2)}</p>
+      {/* <p>{JSON.stringify(props, null, 2)}</p> */}
     </form>
   );
 };

@@ -2,7 +2,7 @@ import React from 'react';
 import Select, { OptionsType, ValueType } from 'react-select';
 import { FieldProps } from 'formik';
 
-import { Label } from './styles';
+import { Label, ErrorMessage } from './styles';
 
 interface Option {
   label: string;
@@ -13,6 +13,7 @@ interface SelectProps extends FieldProps {
   options: OptionsType<Option>;
   placeholder?: string;
   className?: string;
+  error?: string;
 }
 
 const customStyles = {
@@ -21,7 +22,7 @@ const customStyles = {
     border: 'none',
     borderRadius: '8px',
     height: '44px',
-    marginTop: '8px',
+    margin: '8px 0',
     fontSize: '12px',
     zIndex: '0',
   }),
@@ -52,6 +53,7 @@ const HomeSelect: React.FC<SelectProps> = ({
   placeholder,
   className,
   form,
+  error,
 }) => {
   const onChange = (option: ValueType<Option | Option[]>) => {
     form.setFieldValue(field.name, (option as Option).value);
@@ -88,6 +90,7 @@ const HomeSelect: React.FC<SelectProps> = ({
         noOptionsMessage={() => 'Sem opções'}
         styles={customStyles}
       />
+      {!!error && <ErrorMessage>{error}</ErrorMessage>}
     </div>
   );
 };
