@@ -29,6 +29,7 @@ const Header: React.FC = () => {
         <Link to="/search">ENCONTRAR</Link>
         <Link to="/create">ANUNCIAR</Link>
         <Link to="/contact">CONTATO</Link>
+        <Link to="/login">ENTRAR</Link>
       </Nav>
       <MenuButton type="button" onClick={handleMenuToggle}>
         {menuIsOpened ? (

@@ -12,7 +12,6 @@ export const Container = styled.div`
 
   p {
     font-size: 32px;
-    width: 560px;
     height: 160px;
   }
 

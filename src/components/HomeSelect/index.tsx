@@ -1,16 +1,18 @@
-import React, { InputHTMLAttributes } from 'react';
-import Select from 'react-select';
+import React from 'react';
+import Select, { OptionsType, ValueType } from 'react-select';
+import { FieldProps } from 'formik';
 
 import { Label } from './styles';
 
-interface SelectProps extends InputHTMLAttributes<HTMLSelectElement> {
-  name: string;
-  values: {
-    label: string;
-    value: string;
-  }[];
-  placeholder: string;
-  onChange: any;
+interface Option {
+  label: string;
+  value: string;
+}
+
+interface SelectProps extends FieldProps {
+  options: OptionsType<Option>;
+  placeholder?: string;
+  className?: string;
 }
 
 const customStyles = {
@@ -45,16 +47,42 @@ const customStyles = {
 };
 
 const HomeSelect: React.FC<SelectProps> = ({
-  name,
-  values,
+  options,
+  field,
   placeholder,
-  onChange,
+  className,
+  form,
 }) => {
+  const onChange = (option: ValueType<Option | Option[]>) => {
+    form.setFieldValue(field.name, (option as Option).value);
+  };
+
+  const getValue = () => {
+    if (options) {
+      return options.find(option => option.value === field.value);
+    }
+    return '' as any;
+  };
+
+  const selectLabel = (name: string) => {
+    switch (name) {
+      case 'uf':
+        return 'Estado';
+      case 'city':
+        return 'Cidade';
+      default:
+        return name;
+    }
+  };
+
   return (
     <div>
-      <Label>{name}</Label>
+      <Label>{selectLabel(field.name)}</Label>
       <Select
-        options={values}
+        className={className}
+        name={field.name}
+        value={getValue()}
+        options={options}
         placeholder={placeholder}
         onChange={onChange}
         noOptionsMessage={() => 'Sem opções'}

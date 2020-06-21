@@ -30,14 +30,14 @@ export const Nav = styled.nav<NavProps>`
     }
   }
 
-  @media (max-width: 425px) {
+  @media (max-width: 880px) {
     display: none;
   }
 
   ${({ open }) =>
     open &&
     css`
-      @media (max-width: 425px) {
+      @media (max-width: 880px) {
         display: flex;
         flex-direction: column;
         width: 100%;
@@ -63,7 +63,7 @@ export const MenuButton = styled.button`
   background-color: transparent;
   border: none;
 
-  @media (max-width: 425px) {
+  @media (max-width: 880px) {
     display: inline;
     z-index: 16;
   }

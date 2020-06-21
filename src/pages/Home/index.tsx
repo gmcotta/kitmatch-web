@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+
 import Header from '../../components/Header';
 import HomeSelect from '../../components/HomeSelect';
 import HomeButton from '../../components/HomeButton';
@@ -28,6 +29,10 @@ interface UFSelect {
 
 interface SelectData {
   value: string;
+}
+
+interface FormData {
+  handleSubmit: any;
 }
 
 const Home: React.FC = () => {
@@ -97,7 +102,7 @@ const Home: React.FC = () => {
         </p>
 
         <SelectWrapper>
-          <HomeSelect
+          {/* <HomeSelect
             name="Estado"
             values={UFs}
             placeholder="Selecione o estado..."
@@ -108,7 +113,7 @@ const Home: React.FC = () => {
             values={cities}
             placeholder="Selecione a cidade..."
             onChange={handleCityChange}
-          />
+          /> */}
         </SelectWrapper>
         <ButtonWrapper>
           <HomeButton>Encontre minha kitnet</HomeButton>
