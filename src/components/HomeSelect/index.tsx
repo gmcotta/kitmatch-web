@@ -14,6 +14,7 @@ interface SelectProps extends FieldProps {
   placeholder?: string;
   className?: string;
   error?: string;
+  touched?: boolean;
 }
 
 const customStyles = {
@@ -54,6 +55,7 @@ const HomeSelect: React.FC<SelectProps> = ({
   className,
   form,
   error,
+  touched,
 }) => {
   const onChange = (option: ValueType<Option | Option[]>) => {
     form.setFieldValue(field.name, (option as Option).value);
@@ -90,7 +92,7 @@ const HomeSelect: React.FC<SelectProps> = ({
         noOptionsMessage={() => 'Sem opções'}
         styles={customStyles}
       />
-      {!!error && <ErrorMessage>{error}</ErrorMessage>}
+      {!!error && touched && <ErrorMessage>{error}</ErrorMessage>}
     </div>
   );
 };

@@ -2,10 +2,12 @@ import React, { useState, useEffect } from 'react';
 import { Field, FormikProps, FormikBag, withFormik } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
-import { RouteComponentProps } from 'react-router-dom';
+import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import HomeSelect from '../../components/HomeSelect';
-import HomeButton from '../../components/HomeButton';
+import { FieldsWrapper } from './styles';
+
+import HomeSelect from '../HomeSelect';
+import HomeButton from '../HomeButton';
 
 interface FormValues {
   uf: string;
@@ -44,13 +46,14 @@ const formikEnhancer = withFormik({
     const { history } = formikBag.props;
     if (values.owner) {
       history.push('/create');
+    } else {
+      history.push('/search');
     }
-    history.push('/search');
   },
 });
 
 const MyForm = (props: FormikProps<FormValues>) => {
-  const { values, errors, setFieldValue, handleSubmit } = props;
+  const { values, errors, touched, setFieldValue, handleSubmit } = props;
 
   const [UFs, setUFs] = useState<SelectData[]>([]);
   const [cities, setCities] = useState<SelectData[]>([]);
@@ -107,37 +110,42 @@ const MyForm = (props: FormikProps<FormValues>) => {
 
   return (
     <form onSubmit={handleSubmit}>
-      <Field
-        name="uf"
-        options={UFs}
-        component={HomeSelect}
-        placeholder="Selecione um estado..."
-        error={errors.uf}
-      />
-      <Field
-        name="city"
-        options={cities}
-        component={HomeSelect}
-        placeholder="Selecione uma cidade..."
-        error={errors.city}
-      />
-      <label htmlFor="owner">
-        <input
-          name="owner"
-          type="checkbox"
-          onChange={() => setFieldValue('owner', !values.owner)}
+      <FieldsWrapper>
+        <Field
+          name="uf"
+          options={UFs}
+          component={HomeSelect}
+          placeholder="Selecione um estado..."
+          error={errors.uf}
+          touched={touched.uf}
         />
-        Eu sou proprietário
-      </label>
+        <Field
+          name="city"
+          options={cities}
+          component={HomeSelect}
+          placeholder="Selecione uma cidade..."
+          error={errors.city}
+          touched={touched.city}
+        />
+        <label htmlFor="owner">
+          <input
+            type="checkbox"
+            name="owner"
+            onChange={() => setFieldValue('owner', !values.owner)}
+          />
+          <span />
+          Eu sou proprietário
+        </label>
+      </FieldsWrapper>
       <br />
       <HomeButton type="submit">
-        {values.owner ? 'Anunciar minha kitnet' : 'Encontre minha kitnet'}
+        {values.owner ? 'Anuncie minha kitnet' : 'Encontre minha kitnet'}
       </HomeButton>
       {/* <p>{JSON.stringify(props, null, 2)}</p> */}
     </form>
   );
 };
 
-const MyEnhancedForm = formikEnhancer(MyForm);
+const HomeForm = formikEnhancer(MyForm);
 
-export default MyEnhancedForm;
+export default withRouter(HomeForm);

@@ -68,27 +68,3 @@ export const FlexContainer = styled.section`
   flex-direction: column;
   justify-content: space-between;
 `;
-
-export const SelectWrapper = styled.div`
-  width: 396px;
-
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  gap: 16px;
-
-  @media (max-width: 425px) {
-    width: 100%;
-  }
-`;
-
-export const ButtonWrapper = styled.div`
-  width: 396px;
-
-  display: grid;
-  grid-template-rows: repeat(2, 1fr);
-  gap: 16px;
-
-  @media (max-width: 425px) {
-    width: 100%;
-  }
-`;
