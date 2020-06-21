@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
-import { Field, FormikProps, FormikHelpers, withFormik } from 'formik';
+import { Field, FormikProps, FormikBag, withFormik } from 'formik';
 import axios from 'axios';
 import * as Yup from 'yup';
+import { RouteComponentProps } from 'react-router-dom';
 
 import HomeSelect from '../../components/HomeSelect';
+import HomeButton from '../../components/HomeButton';
 
 interface FormValues {
   uf: string;
   city: string;
+  owner: boolean;
 }
 
 interface IBGEUfResponse {
@@ -31,15 +34,20 @@ const formikEnhancer = withFormik({
   mapPropsToValues: () => ({
     uf: '',
     city: '',
+    owner: false,
   }),
-  handleSubmit: (values: FormValues, actions: FormikHelpers<FormValues>) => {
-    console.log(values);
-    actions.setSubmitting(false);
+  handleSubmit: (
+    values: FormValues,
+    formikBag: FormikBag<RouteComponentProps, FormValues>,
+  ) => {
+    const { history } = formikBag.props;
+    formikBag.setSubmitting(false);
+    values.owner ? history.push('/create') : history.push('/search');
   },
 });
 
 const MyForm = (props: FormikProps<FormValues>) => {
-  const { values, errors, handleSubmit } = props;
+  const { values, errors, setFieldValue, handleSubmit } = props;
 
   const [UFs, setUFs] = useState<UFSelect[]>([]);
   const [cities, setCities] = useState<UFSelect[]>([]);
@@ -62,7 +70,7 @@ const MyForm = (props: FormikProps<FormValues>) => {
   }, []);
 
   useEffect(() => {
-    if (values.uf !== '0') {
+    if (values.uf !== '') {
       axios
         .get<IBGECityResponse[]>(
           `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${values.uf}/municipios`,
@@ -98,7 +106,18 @@ const MyForm = (props: FormikProps<FormValues>) => {
         placeholder="Selecione uma cidade..."
         error={errors.city}
       />
-      <button type="submit">Enviar</button>
+      <label htmlFor="owner">
+        <input
+          name="owner"
+          type="checkbox"
+          onChange={() => setFieldValue('owner', !values.owner)}
+        />
+        Eu sou proprietário
+      </label>
+      <br />
+      <HomeButton type="submit">
+        {values.owner ? 'Anunciar minha kitnet' : 'Encontre minha kitnet'}
+      </HomeButton>
       {/* <p>{JSON.stringify(props, null, 2)}</p> */}
     </form>
   );
