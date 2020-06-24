@@ -5,11 +5,9 @@ import HomeForm from '../../components/HomeForm';
 
 import {
   Title,
-  Paragraph,
   MainContainer,
   ContentContainer,
   BackgroundImage,
-  FormContainer,
 } from './styles';
 
 const Home: React.FC = () => {
@@ -21,14 +19,7 @@ const Home: React.FC = () => {
         {'  de forma simples'}
       </Title>
       <ContentContainer>
-        <FormContainer>
-          <Paragraph>
-            Ajudamos pessoas a encontrarem kitnets, e proprietários a anunciarem
-            de forma fácil!
-          </Paragraph>
-
-          <HomeForm />
-        </FormContainer>
+        <HomeForm />
         <BackgroundImage />
       </ContentContainer>
     </MainContainer>

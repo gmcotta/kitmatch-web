@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { FormContainer, FieldsWrapper } from './styles';
+import { FormContainer, FieldsWrapper, Paragraph } from './styles';
 
 import HomeSelect from '../HomeSelect';
 import HomeButton from '../HomeButton';
@@ -110,6 +110,10 @@ const MyForm = (props: FormikProps<FormValues>) => {
 
   return (
     <FormContainer onSubmit={handleSubmit}>
+      <Paragraph>
+        Ajudamos pessoas a encontrarem kitnets, e proprietários a anunciarem de
+        forma fácil!
+      </Paragraph>
       <FieldsWrapper>
         <Field
           name="uf"

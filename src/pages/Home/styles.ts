@@ -1,19 +1,30 @@
 import styled from 'styled-components';
 
 import desktopBG from '../../assets/home_bg.svg';
-import mobileBG from '../../assets/home_gray_house.svg';
+import mobileBG from '../../assets/home_bg_mobile.svg';
 
 export const MainContainer = styled.div`
   padding: 48px;
   max-width: 1366px;
-  height: 100vh;
+  max-height: 1080px;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
 
+  @media (min-width: 426px) and (max-width: 880px) {
+    padding: 32px;
+    height: 100vh;
+    background: url(${mobileBG}) no-repeat center center;
+    background-size: contain;
+    background-origin: content-box;
+  }
+
   @media (max-width: 425px) {
     height: 100vh;
     padding: 16px;
+    background: url(${mobileBG}) no-repeat center center;
+    background-size: contain;
+    background-origin: content-box;
   }
 `;
 
@@ -22,11 +33,11 @@ export const Title = styled.h1`
   margin: 40px 0;
 
   @media (max-width: 425px) {
-    font-size: 20px;
+    font-size: 28px;
     margin: 20px 0;
   }
 
-  @media (min-width: 426px) and (max-width: 880px) {
+  @media (max-width: 880px) {
     text-align: center;
   }
 
@@ -35,63 +46,32 @@ export const Title = styled.h1`
   }
 `;
 
-export const Paragraph = styled.p`
-  font-size: 32px;
-  width: 560px;
-  /*height: 160px;*/
-
-  @media (min-width: 426px) and (max-width: 880px) {
-    text-align: center;
-  }
-
-  @media (max-width: 425px) {
-    font-size: 16px;
-    width: 200px;
-    height: 100px;
-  }
-`;
-
-export const ContentContainer = styled.section`
+export const ContentContainer = styled.article`
   display: flex;
   justify-content: space-between;
   position: relative;
   height: 100%;
-
-  @media (max-width: 880px) {
-  }
 `;
 
 export const BackgroundImage = styled.div`
   z-index: -16;
-  @media (min-width: 881px) {
-    background: url(${desktopBG}) no-repeat center;
-    transform: scaleX(-1);
+  background: url(${desktopBG}) no-repeat center;
+  width: 888px;
+  height: 464px;
+
+  @media (min-width: 1367px) {
+    margin-top: 16px;
+    margin-left: 64px;
+  }
+
+  @media (min-width: 881px) and (max-width: 1366px) {
     background-size: 100%;
-    width: 888px;
-    height: 464px;
     position: fixed;
     top: 240px;
     left: 460px;
   }
 
-  @media (max-width: 425px) {
-    background: url(${mobileBG}) no-repeat;
-    position: fixed;
-    width: 480px;
-    height: 408px;
-    top: 100px;
-    right: -208px;
-  }
-`;
-
-export const FormContainer = styled.section`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  width: 380px;
-
-  @media (min-width: 426px) and (max-width: 880px) {
-    align-items: center;
-    width: 100%;
+  @media (max-width: 880px) {
+    display: none;
   }
 `;
