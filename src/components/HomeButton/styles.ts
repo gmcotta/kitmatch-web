@@ -3,7 +3,7 @@ import { darken } from 'polished';
 
 export const Button = styled.button`
   height: 44px;
-  width: 396px;
+  width: 100%;
   background-color: #5e54ac;
   color: #fff;
   font-size: 16px;
@@ -12,7 +12,7 @@ export const Button = styled.button`
   font-weight: bold;
   text-transform: uppercase;
 
-  @media (max-width: 425px) {
+  @media (max-width: 880px) {
     width: 100%;
   }
 

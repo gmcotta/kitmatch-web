@@ -3,26 +3,35 @@ import React from 'react';
 import Header from '../../components/Header';
 import HomeForm from '../../components/HomeForm';
 
-import { Title, Container, BackgroundImage, FlexContainer } from './styles';
+import {
+  Title,
+  Paragraph,
+  MainContainer,
+  ContentContainer,
+  BackgroundImage,
+  FormContainer,
+} from './styles';
 
 const Home: React.FC = () => {
   return (
-    <Container>
+    <MainContainer>
       <Header />
       <Title>
         <span>Aluguel</span>
-        &nbsp;de forma simples
+        {'  de forma simples'}
       </Title>
-      <BackgroundImage />
-      <FlexContainer>
-        <p>
-          Ajudamos pessoas a encontrarem kitnets, e proprietários a anunciarem
-          de forma fácil!
-        </p>
+      <ContentContainer>
+        <FormContainer>
+          <Paragraph>
+            Ajudamos pessoas a encontrarem kitnets, e proprietários a anunciarem
+            de forma fácil!
+          </Paragraph>
 
-        <HomeForm />
-      </FlexContainer>
-    </Container>
+          <HomeForm />
+        </FormContainer>
+        <BackgroundImage />
+      </ContentContainer>
+    </MainContainer>
   );
 };
 

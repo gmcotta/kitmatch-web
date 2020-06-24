@@ -4,7 +4,7 @@ import axios from 'axios';
 import * as Yup from 'yup';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
-import { FieldsWrapper } from './styles';
+import { FormContainer, FieldsWrapper } from './styles';
 
 import HomeSelect from '../HomeSelect';
 import HomeButton from '../HomeButton';
@@ -109,7 +109,7 @@ const MyForm = (props: FormikProps<FormValues>) => {
   }, [values.uf]);
 
   return (
-    <form onSubmit={handleSubmit}>
+    <FormContainer onSubmit={handleSubmit}>
       <FieldsWrapper>
         <Field
           name="uf"
@@ -142,7 +142,7 @@ const MyForm = (props: FormikProps<FormValues>) => {
         {values.owner ? 'Anuncie minha kitnet' : 'Encontre minha kitnet'}
       </HomeButton>
       {/* <p>{JSON.stringify(props, null, 2)}</p> */}
-    </form>
+    </FormContainer>
   );
 };
 
