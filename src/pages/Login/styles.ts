@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 
-import desktopBG from '../../assets/home_bg.svg';
-import mobileBG from '../../assets/home_bg_mobile.svg';
+import desktopBG from '../../assets/login_bg.svg';
+import mobileBG from '../../assets/login_bg_mobile.svg';
 
 export const MainContainer = styled.div`
   padding: 48px;

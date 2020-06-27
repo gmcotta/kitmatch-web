@@ -44,13 +44,12 @@ const formikEnhancer = withFormik({
     values: FormValues,
     formikBag: FormikBag<RouteComponentProps, FormValues>,
   ) => {
-    console.log(values);
-    // const { history } = formikBag.props;
-    // if (values.owner) {
-    //   history.push('/create');
-    // } else {
-    //   history.push('/search');
-    // }
+    const { history } = formikBag.props;
+    if (values.owner) {
+      history.push('/create');
+    } else {
+      history.push('/search');
+    }
   },
 });
 
@@ -148,7 +147,6 @@ const MyForm = (props: FormikProps<FormValues>) => {
       <HomeButton type="submit">
         {values.owner ? 'Anuncie minha kitnet' : 'Encontre minha kitnet'}
       </HomeButton>
-      {/* <p>{JSON.stringify(props, null, 2)}</p> */}
     </FormContainer>
   );
 };
