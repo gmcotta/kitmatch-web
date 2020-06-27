@@ -6,7 +6,7 @@ import mobileBG from '../../assets/home_bg_mobile.svg';
 export const MainContainer = styled.div`
   padding: 48px;
   max-width: 1366px;
-  max-height: 1080px;
+  max-height: 100vh;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
@@ -20,8 +20,8 @@ export const MainContainer = styled.div`
   }
 
   @media (max-width: 425px) {
-    height: 100vh;
     padding: 16px;
+    height: 100vh;
     background: url(${mobileBG}) no-repeat center center;
     background-size: contain;
     background-origin: content-box;

@@ -6,6 +6,7 @@ interface NavProps {
 }
 
 export const Container = styled.header`
+  max-width: 1366px;
   display: flex;
   align-items: center;
   justify-content: space-between;

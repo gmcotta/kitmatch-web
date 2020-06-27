@@ -1,5 +1,5 @@
-import React from 'react';
-import Select, { OptionsType, ValueType } from 'react-select';
+import React, { CSSProperties } from 'react';
+import Select, { OptionsType, ValueType, Styles } from 'react-select';
 import { FieldProps } from 'formik';
 
 import { Label, ErrorMessage } from './styles';
@@ -17,37 +17,6 @@ interface SelectProps extends FieldProps {
   touched?: boolean;
 }
 
-const customStyles = {
-  control: (provided: any) => ({
-    ...provided,
-    border: 'none',
-    borderRadius: '8px',
-    height: '44px',
-    margin: '8px 0',
-    fontSize: '12px',
-    zIndex: '0',
-  }),
-
-  indicatorSeparator: () => ({
-    display: 'none',
-  }),
-
-  dropdownIndicator: (provided: any) => ({
-    ...provided,
-    color: '#000',
-  }),
-
-  menu: (provided: any) => ({
-    ...provided,
-    borderRadius: '8px',
-  }),
-
-  menuList: (provided: any) => ({
-    ...provided,
-    fontSize: '12px',
-  }),
-};
-
 const HomeSelect: React.FC<SelectProps> = ({
   options,
   field,
@@ -57,15 +26,49 @@ const HomeSelect: React.FC<SelectProps> = ({
   error,
   touched,
 }) => {
+  const customStyles = {
+    control: (provided: any) => ({
+      ...provided,
+      border: error && touched ? '1px solid #ca0000' : '1px solid #5e54ac',
+      borderRadius: '8px',
+      height: '44px',
+      margin: '4px 0 8px',
+      fontSize: '12px',
+      zIndex: '0',
+    }),
+
+    indicatorSeparator: () => ({
+      display: 'none',
+    }),
+
+    dropdownIndicator: (provided: any) => ({
+      ...provided,
+      color: '#000',
+    }),
+
+    menu: (provided: any) => ({
+      ...provided,
+      borderRadius: '8px',
+    }),
+
+    menuList: (provided: any) => ({
+      ...provided,
+      fontSize: '12px',
+    }),
+  };
+
   const onChange = (option: ValueType<Option | Option[]>) => {
     form.setFieldValue(field.name, (option as Option).value);
   };
 
   const getValue = () => {
+    if (field.value === '') {
+      return null;
+    }
     if (options) {
       return options.find(option => option.value === field.value);
     }
-    return '' as any;
+    return null;
   };
 
   const selectLabel = (name: string) => {
@@ -81,7 +84,9 @@ const HomeSelect: React.FC<SelectProps> = ({
 
   return (
     <div>
-      <Label>{selectLabel(field.name)}</Label>
+      <Label error={error} touched={touched}>
+        {selectLabel(field.name)}
+      </Label>
       <Select
         className={className}
         name={field.name}
@@ -92,7 +97,11 @@ const HomeSelect: React.FC<SelectProps> = ({
         noOptionsMessage={() => 'Sem opções'}
         styles={customStyles}
       />
-      {!!error && touched && <ErrorMessage>{error}</ErrorMessage>}
+      {error !== undefined && touched && (
+        <ErrorMessage error={error} touched={touched}>
+          {error}
+        </ErrorMessage>
+      )}
     </div>
   );
 };

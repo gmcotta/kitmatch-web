@@ -34,6 +34,7 @@ const formikEnhancer = withFormik({
     uf: Yup.string().required('Estado é obrigatório!'),
     city: Yup.string().required('Cidade é obrigatória!'),
   }),
+  enableReinitialize: true,
   mapPropsToValues: () => ({
     uf: '',
     city: '',
@@ -43,12 +44,13 @@ const formikEnhancer = withFormik({
     values: FormValues,
     formikBag: FormikBag<RouteComponentProps, FormValues>,
   ) => {
-    const { history } = formikBag.props;
-    if (values.owner) {
-      history.push('/create');
-    } else {
-      history.push('/search');
-    }
+    console.log(values);
+    // const { history } = formikBag.props;
+    // if (values.owner) {
+    //   history.push('/create');
+    // } else {
+    //   history.push('/search');
+    // }
   },
 });
 
@@ -88,6 +90,7 @@ const MyForm = (props: FormikProps<FormValues>) => {
 
   useEffect(() => {
     if (values.uf !== '') {
+      values.city = '';
       axios
         .get<IBGECityResponse[]>(
           `https://servicodados.ibge.gov.br/api/v1/localidades/estados/${values.uf}/municipios`,
