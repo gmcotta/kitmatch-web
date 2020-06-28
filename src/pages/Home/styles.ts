@@ -55,9 +55,8 @@ export const ContentContainer = styled.article`
 
 export const BackgroundImage = styled.div`
   z-index: -16;
-  background: url(${desktopBG}) no-repeat center;
+  background: url(${desktopBG}) no-repeat center center;
   width: 826px;
-  height: 464px;
   background-size: contain;
 
   @media (min-width: 1367px) {
@@ -66,6 +65,7 @@ export const BackgroundImage = styled.div`
 
   @media (min-width: 881px) and (max-width: 1366px) {
     position: fixed;
+    height: 496px;
     top: 224px;
     left: 492px;
   }
