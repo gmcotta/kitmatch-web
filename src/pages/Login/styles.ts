@@ -6,15 +6,14 @@ import mobileBG from '../../assets/login_bg_mobile.svg';
 export const MainContainer = styled.div`
   padding: 48px;
   max-width: 1366px;
-  height: 768px;
+  min-height: 100vh;
+  max-height: 100%;
   display: flex;
   flex-direction: column;
   margin: 0 auto;
 
   @media (max-width: 880px) {
     padding: 32px;
-    min-height: 100vh;
-    max-height: 100%;
     background: url(${mobileBG}) no-repeat center center;
     background-size: contain;
     background-origin: content-box;
@@ -62,7 +61,7 @@ export const BackgroundImage = styled.div`
 
   @media (min-width: 881px) and (max-width: 1366px) {
     position: fixed;
-    height: 560px;
+    height: 500px;
     top: 224px;
     left: 492px;
   }

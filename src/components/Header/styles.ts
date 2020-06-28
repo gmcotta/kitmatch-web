@@ -35,6 +35,12 @@ export const Nav = styled.nav<NavProps>`
     display: none;
   }
 
+  a.selected {
+    font-weight: 900;
+    color: ${darken(0.1, '#5e54ac')};
+    pointer-events: none;
+  }
+
   ${({ open }) =>
     open &&
     css`

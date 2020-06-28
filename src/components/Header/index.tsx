@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import { Link } from 'react-router-dom';
 
 import { Container, Nav, MenuButton } from './styles';
@@ -9,11 +9,7 @@ import menuClose from '../../assets/menu-close.svg';
 const Header: React.FC = () => {
   const [menuIsOpened, setMenuIsOpened] = useState(false);
 
-  useEffect(() => {
-    if (window.innerWidth > 425) {
-      setMenuIsOpened(false);
-    }
-  }, []);
+  const url = document.URL;
 
   function handleMenuToggle() {
     setMenuIsOpened(!menuIsOpened);
@@ -25,11 +21,30 @@ const Header: React.FC = () => {
         <img src={logo} alt="KitMatch" />
       </Link>
       <Nav open={menuIsOpened}>
-        <Link to="/about">SOBRE NÓS</Link>
-        <Link to="/search">ENCONTRAR</Link>
-        <Link to="/create">ANUNCIAR</Link>
-        <Link to="/contact">CONTATO</Link>
-        <Link to="/login">ENTRAR</Link>
+        <Link className={url.includes('/about') ? 'selected' : ''} to="/about">
+          SOBRE NÓS
+        </Link>
+        <Link
+          className={url.includes('/search') ? 'selected' : ''}
+          to="/search"
+        >
+          ENCONTRAR
+        </Link>
+        <Link
+          className={url.includes('/create') ? 'selected' : ''}
+          to="/create"
+        >
+          ANUNCIAR
+        </Link>
+        <Link
+          className={url.includes('/contact') ? 'selected' : ''}
+          to="/contact"
+        >
+          CONTATO
+        </Link>
+        <Link className={url.includes('/login') ? 'selected' : ''} to="/login">
+          ENTRAR
+        </Link>
       </Nav>
       <MenuButton type="button" onClick={handleMenuToggle}>
         {menuIsOpened ? (

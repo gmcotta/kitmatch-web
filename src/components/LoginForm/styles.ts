@@ -6,7 +6,7 @@ export const FormContainer = styled.form`
   flex-direction: column;
   justify-content: space-between;
   width: 380px;
-  height: 560px;
+  height: 500px;
 
   @media (max-width: 880px) {
     align-items: center;
