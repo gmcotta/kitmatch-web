@@ -11,12 +11,10 @@ export default createGlobalStyle`
   body {
     background-image: linear-gradient(to bottom left, #F0F0F5, #D3D0FD);
     -webkit-font-smoothing: antialiased;
-    height: 100vh;
-    background-size: contain;
-    overflow: scroll;
+    min-height: 100vh;
 
     @media (max-width: 425px) {
-      height: 100%;
+      max-height: 100%;
     }
   }
 

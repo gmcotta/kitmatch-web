@@ -11,9 +11,10 @@ export const MainContainer = styled.div`
   flex-direction: column;
   margin: 0 auto;
 
-  @media (min-width: 426px) and (max-width: 880px) {
+  @media (max-width: 880px) {
     padding: 32px;
-    height: 100vh;
+    min-height: 100vh;
+    max-height: 100%;
     background: url(${mobileBG}) no-repeat center center;
     background-size: contain;
     background-origin: content-box;
@@ -21,10 +22,6 @@ export const MainContainer = styled.div`
 
   @media (max-width: 425px) {
     padding: 16px;
-    height: 100%;
-    background: url(${mobileBG}) no-repeat center center;
-    background-size: contain;
-    background-origin: content-box;
   }
 `;
 

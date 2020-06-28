@@ -6,10 +6,20 @@ export const FormContainer = styled.form`
   flex-direction: column;
   justify-content: space-between;
   width: 380px;
+  height: 500px;
 
-  @media (min-width: 426px) and (max-width: 880px) {
+  @media (max-width: 880px) {
     align-items: center;
     width: 100%;
+    height: 100%;
+  }
+
+  div.button-area {
+    width: 100%;
+
+    @media (max-width: 425px) {
+      margin-top: 16px;
+    }
   }
 `;
 
@@ -27,12 +37,17 @@ export const Paragraph = styled.p`
     font-size: 20px;
     text-align: center;
     width: 100%;
+    margin-bottom: 16px;
   }
 `;
 
 export const ForgotText = styled(Link)`
   text-align: right;
   color: #5e54ac;
+
+  @media (max-width: 425px) {
+    margin-bottom: 16px;
+  }
 `;
 
 export const FieldsWrapper = styled.div`
@@ -67,6 +82,7 @@ export const SwitchLogin = styled.div`
 
   @media (max-width: 425px) {
     font-size: 12px;
+    margin-
   }
 
   button {

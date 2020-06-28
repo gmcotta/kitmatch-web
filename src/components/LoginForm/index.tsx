@@ -105,7 +105,7 @@ const MyForm = (props: FormikProps<FormValues>) => {
           />
         )}
       </FieldsWrapper>
-      <div style={{ width: '100%' }}>
+      <div className="button-area">
         <HomeButton type="submit">
           {values.isLogin ? 'Login' : 'Cadastrar'}
         </HomeButton>
