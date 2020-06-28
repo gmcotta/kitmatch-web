@@ -42,6 +42,22 @@ export const FieldsWrapper = styled.div`
   @media (max-width: 880px) {
     width: 100%;
   }
+
+  span.divider {
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: bold;
+
+    &::before,
+    &::after {
+      content: '';
+      background-color: #5e54ac;
+      height: 1px;
+      width: 40%;
+    }
+  }
 `;
 
 export const SwitchLogin = styled.div`

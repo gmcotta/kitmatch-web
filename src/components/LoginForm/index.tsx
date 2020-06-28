@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import React from 'react';
 import { Field, FormikProps, FormikBag, withFormik } from 'formik';
-import axios from 'axios';
 import * as Yup from 'yup';
 import { RouteComponentProps, withRouter } from 'react-router-dom';
 
@@ -12,6 +11,7 @@ import {
   SwitchLogin,
 } from './styles';
 
+import FacebookButton from '../FacebookButton';
 import CustomInput from '../CustomInput';
 import HomeButton from '../HomeButton';
 
@@ -74,6 +74,8 @@ const MyForm = (props: FormikProps<FormValues>) => {
         {values.isLogin ? 'Bom ter você de volta!' : 'Cadastre-se, é grátis!'}
       </Paragraph>
       <FieldsWrapper>
+        <FacebookButton />
+        <span className="divider">OU</span>
         <Field
           name="email"
           placeholder="Digite seu email..."

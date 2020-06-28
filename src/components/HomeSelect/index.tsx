@@ -1,5 +1,5 @@
-import React, { CSSProperties } from 'react';
-import Select, { OptionsType, ValueType, Styles } from 'react-select';
+import React from 'react';
+import Select, { OptionsType, ValueType } from 'react-select';
 import { FieldProps } from 'formik';
 
 import { Label, ErrorMessage } from './styles';

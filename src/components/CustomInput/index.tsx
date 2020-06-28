@@ -48,7 +48,7 @@ const CustomInput: React.FC<InputProps> = ({
               setIsVisible(!isVisible);
             }}
           >
-            {isVisible ? <FaEyeSlash /> : <FaEye />}
+            {isVisible ? <FaEyeSlash color="#777" /> : <FaEye color="#777" />}
           </SpyButton>
         )}
       </InputWrapper>

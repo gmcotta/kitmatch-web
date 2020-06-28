@@ -21,7 +21,7 @@ export const MainContainer = styled.div`
 
   @media (max-width: 425px) {
     padding: 16px;
-    height: 100vh;
+    height: 100%;
     background: url(${mobileBG}) no-repeat center center;
     background-size: contain;
     background-origin: content-box;
