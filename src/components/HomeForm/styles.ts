@@ -31,7 +31,6 @@ export const Paragraph = styled.p`
 
 export const FieldsWrapper = styled.div`
   display: grid;
-  grid-template-rows: repeat(2, 1fr);
   gap: 16px;
 
   @media (max-width: 880px) {

@@ -11,7 +11,6 @@ export const Label = styled.span<LabelProps>`
 `;
 
 export const ErrorMessage = styled.span<LabelProps>`
-  margin-top: 8px;
   font-size: 12px;
   color: #ca0000;
 `;

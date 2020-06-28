@@ -4,6 +4,8 @@ import { FieldProps } from 'formik';
 
 import { Label, ErrorMessage } from './styles';
 
+import elementLabel from '../../utils/elementLabel';
+
 interface Option {
   label: string;
   value: string;
@@ -32,7 +34,7 @@ const HomeSelect: React.FC<SelectProps> = ({
       border: error && touched ? '1px solid #ca0000' : '1px solid #5e54ac',
       borderRadius: '8px',
       height: '44px',
-      margin: '4px 0 8px',
+      margin: '4px 0',
       fontSize: '12px',
       zIndex: '0',
     }),
@@ -71,21 +73,10 @@ const HomeSelect: React.FC<SelectProps> = ({
     return null;
   };
 
-  const selectLabel = (name: string) => {
-    switch (name) {
-      case 'uf':
-        return 'Estado';
-      case 'city':
-        return 'Cidade';
-      default:
-        return name;
-    }
-  };
-
   return (
     <div>
       <Label error={error} touched={touched}>
-        {selectLabel(field.name)}
+        {elementLabel(field.name)}
       </Label>
       <Select
         className={className}
